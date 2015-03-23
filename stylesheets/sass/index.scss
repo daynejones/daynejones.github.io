@@ -33,7 +33,7 @@ main > div {
 h3.projects-title {
   margin: 1em 2.35765%;
   @include media($mobile){
-    @include pad(0 8%);
+    @include pad(0 4em);
     margin: 1em 0;
   }
 }
@@ -41,7 +41,7 @@ h3.projects-title {
 .projects {
   margin: 0 2.35765%;
   @include media($mobile){
-    @include pad(0 8%);
+    @include pad(0 4em);
     margin: 1em 0;
   }
   img {

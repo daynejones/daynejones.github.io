@@ -208,13 +208,13 @@ main, header, footer {
     display: table; }
   @media screen and (max-width: 40em) {
     main, header, footer {
-      padding: 0 8%; } }
+      padding: 0 3em; } }
   @media screen and (min-width: 40em) and (max-width: 64em) {
     main, header, footer {
-      padding: 0 15%; } }
+      padding: 0 6em; } }
   @media screen and (min-width: 64em) {
     main, header, footer {
-      padding: 0 15%; } }
+      padding: 0 10em; } }
 
 header {
   margin-top: 10em; }
@@ -281,14 +281,14 @@ h3.projects-title {
   margin: 1em 2.35765%; }
   @media screen and (max-width: 40em) {
     h3.projects-title {
-      padding: 0 8%;
+      padding: 0 4em;
       margin: 1em 0; } }
 
 .projects {
   margin: 0 2.35765%; }
   @media screen and (max-width: 40em) {
     .projects {
-      padding: 0 8%;
+      padding: 0 4em;
       margin: 1em 0; } }
   .projects img {
     display: block; }
