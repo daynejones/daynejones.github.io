@@ -277,12 +277,25 @@ h5 {
 main > div {
   margin-top: 3em; }
 
-h3.projects-title {
-  margin: 1em 2.35765%; }
+.projects-title {
+  max-width: 68em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+  margin-bottom: 1em; }
+  .projects-title::after {
+    clear: both;
+    content: "";
+    display: table; }
   @media screen and (max-width: 40em) {
-    h3.projects-title {
-      padding: 0 4em;
-      margin: 1em 0; } }
+    .projects-title {
+      padding: 0 3em; } }
+  @media screen and (min-width: 40em) and (max-width: 64em) {
+    .projects-title {
+      padding: 0 6em; } }
+  @media screen and (min-width: 64em) {
+    .projects-title {
+      padding: 0 10em; } }
 
 .projects {
   margin: 0 2.35765%; }

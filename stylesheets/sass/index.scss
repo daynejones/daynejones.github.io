@@ -30,12 +30,10 @@ main > div {
   margin-top: 3em;
 }
 
-h3.projects-title {
-  margin: 1em 2.35765%;
-  @include media($mobile){
-    @include pad(0 4em);
-    margin: 1em 0;
-  }
+.projects-title {
+  @include center-padding;
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 .projects {

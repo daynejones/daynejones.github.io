@@ -18,16 +18,7 @@
   transform: translateY(-50%);
 }
 
-body {
-  margin: 0;
-  padding: 0;
-}
-
-.clear {
-  clear: both;
-}
-
-main, header, footer {
+@mixin center-padding {
   @include outer-container;
   @include media($mobile){
     @include pad(0 3em);
@@ -38,6 +29,19 @@ main, header, footer {
   @include media($desktop){
     @include pad(0 10em);
   }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.clear {
+  clear: both;
+}
+
+main, header, footer {
+  @include center-padding;
 }
 
 header {
