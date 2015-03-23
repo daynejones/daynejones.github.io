@@ -2,14 +2,133 @@
 <html lang="en">
 <head>
     <title>Dayne Jones - Software Engineer</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="stylesheets/css/index.css" />
+    <link rel="icon" type="image/ico" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=yes">
 </head>
 <body>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <h1>Dayne Jones - Software Engineer</h1>
-      </div>
+  <header>
+    <div class="meta">
+      <img src="img/profile-pic.jpg">
+      <h1>Dayne <span class="backslash">\<br /></span> Jones</h1>
+      <h5>full stack engineer - find me on <a href="https://github.com/daynejones">github</a>, <a href="http://twitter.com/daynejones">twitter</a>, <a href="mailto:jones.dayne@gmail.com">email</a>, or <a href="https://www.linkedin.com/in/daynejones">linkedIn</a><h5>
     </div>
+  </header>
+  <main>
+    <!-- ABOUT -->
+    <div class="about">
+      <h3>About me</h3>
+      <p>I am an ambitious full stack engineer that leans slightly toward the front end. I design and build a wide range of applications, tools, and games for Livingly Media Inc and almost as many for my various side projects. Sometimes that means implementing a new javascript framework and building an API, sometimes coding up a webpage from a mockup, and sometimes its designing and implementing sensical and performant data models.</p>
+      <p>My favorite languages to work with are <b>Javascript, HTML5, CSS3, SQL, PHP, Python, and Ruby</b>. On top of these languages, I love working with <b>Backbone, Angular, Django, Rails, Git, Unix, MongoDB, Node, Bootstrap and the Bourbon family</b> though I'm always testing out the latest technology in my spare time.</p>
+      <p>I am opinionated about writing code that is readable, well commented, and full of helpful variable and function names. Performant systems with extensive testing make me incredibly happy. When the browser is involved, cross-platform compatibility is my top priority.</p>
+      <p>When I'm not writing code for Livingly, I'm writing code or DIYs for <a href="http://howchoo.com">Howchoo.com</a>. When I'm not doing that, I'm freelancing. When I'm not doing that, I'm learning the latest new framework or language. When I'm not doing that, I'm probably hiking, reading, making coffee, or with my amazing family.</p>
+    </div>
+    <!-- END ABOUT -->
+  </main>
+
+  <!-- PROJECTS -->
+  <h3 class="projects-title">Projects I'm proud of</h3>
+  <div class="projects">
+
+    <!-- Howchoo -->
+    <section>
+      <div class="overlay">
+        <h4>Howchoo</h4>
+      </div>
+      <img src="img/howchoo.jpg">
+      <h5><a href="http://howchoo.com/">Live Site</a></h5>
+      <h5>Tech Used - Python, Django, Backbone, jQuery, the Bourbon family</h5>
+      <p>Howchoo is a DIY network. I'm one of the 2 engineers who built and actively maintain the entire application. At Howchoo, users build and share do it yourself guides covering a wide range of topics from carpentry to programming. This is an ongoing project that gets a significant amount of traffic. One part of the application I'm proud of is the Guide publishing tool. Utilizing Django's formsets on the backend and <a href="https://github.com/daynejones/backbone-formset">a custom built Backbone plugin</a> on the front end, I was able to build a dynamic tool that is great for the user and very flexible and easy to use for the developer.</p>
+    </section>
+    <!-- End Howchoo -->
+
+    <!-- Mean app -->
+    <section>
+      <div class="overlay">
+        <h4>Dayne's MEAN app</h4>
+      </div>
+      <img src="img/livestream.png">
+      <h5><a href="https://daynes-mean-app.herokuapp.com/">Live Site</a> - <a href="https://github.com/daynejones/first-node-app">Github</a></h5>
+      <h5>Tech Used - Node, Express, Mongodb, Angular, the Bourbon family</h5>
+      <p>My first exposure to Mongodb, Express, AngularJS, and Node, this app was built in about a week and demonstrates my ability to apply good programming practices even when working with technologies I am not overly familiar with. This app is a realtime photo stream that uses polling to fetch updates on a regular basis.</p>
+    </section>
+    <!-- End Mean app -->
+
+    <!-- Meal Library -->
+    <section>
+      <div class="overlay">
+        <h4>The Meal Library</h4>
+      </div>
+      <img src="img/meallib.jpg">
+      <h5><a href="http://meallibrary.com/">Live Site</a> - <a href="https://github.com/daynejones/meallib">Github</a></h5>
+      <h5>Tech Used - Rails, Bootstrap, jQuery</h5>
+      <p>Built quickly to learn Rails and Bootstrap, this is a basic recipe application. Users can build recipes with ingredients, steps, and cook times. I'm particularly proud of the recipe editor which uses nested forms to make the backend very easy to update.</p>
+    </section>
+    <!-- End Meal Library -->
+
+    <!-- Zimbio Trivia -->
+    <section>
+      <div class="overlay">
+        <h4>Zimbio Trivia</h4>
+      </div>
+      <img src="img/trivia.jpg">
+      <h5><a href="http://zimbio.com/trivia">Live Site</a></h5>
+      <h5>Tech Used - Python, Django, Backbone, jQuery</h5>
+      <p>Following Zimbio's personality quiz success, trivia was the obvious next feature. Keeping performance and mobile first in mind, I built Zimbio's trivia as a single page backbone app. It has proven to be a performant and usable solution and has seen millions of pageviews monthly.</p>
+    </section>
+    <!-- End Trivia -->
+
+    <!-- Beer Me a Link -->
+    <section>
+      <div class="overlay">
+        <h4>Beer Me a Link</h4>
+      </div>
+      <img src="img/bmal.png">
+      <h5><a href="http://beermealink.com/">Live Site</a><a href="https://github.com/daynejones/bmal">Github</a></h5>
+      <h5>Tech Used - PHP, jQuery</h5>
+      <p>What started as a joke ended up as a URL shortener.</p>
+    </section>
+    <!-- end Beer me a link  -->
+
+    <!-- Raspberry Pi Garage Door Opener -->
+    <section>
+      <div class="overlay">
+        <h4>Raspberry Pi Garage Door Opener</h4>
+      </div>
+      <img src="img/garage-door.jpg">
+      <h5><a href="https://github.com/daynejones/Garage-Door-Pi">Github</a></h5>
+      <h5>Tech Used - PHP, jQuery, Raspberry Pi</h5>
+      <p>As an interesting side project several years ago, I wanted to be able to open my garage door from a web app. I built the application and wired up my garage door using some relays and reed switches. Warning: the code isn't pretty!</p>
+    </section>
+    <!-- End Raspberry Pi Garage Door Opener -->
+
+    <!-- Lonny Magazine Visual Index -->
+    <section>
+      <div class="overlay">
+        <h4>Lonny Magazine Visual Index</h4>
+      </div>
+      <img src="img/visual-index.png">
+      <h5><a href="http://www.lonny.com/mag/D93AaQkHGCZ/March+2015/index">Live Site</a></h5>
+      <h5>Tech Used - Django, Backbone, jQuery, Gsap.js</h5>
+      <p>Lonny magazine needed to port their old print magazine to the web in a unique, interesting way. One of the main components of the magazine is the visual index. Using CSS3 only, I was able to build an interactive visual index for the magazine that works and looks good in every browser and device. I was also fully responsible for building the backend and tool that an editor uses to build one of these.</p>
+    </section>
+    <!-- End Lonny mag -->
+
+    <!-- StyleBistro lookbooks -->
+    <section>
+      <div class="overlay">
+        <h4>StyleBistro Lookbooks</h4>
+      </div>
+      <img src="img/lookbooks.png">
+      <h5><a href="http://www.stylebistro.com/lookbooks">Live Site</a></h5>
+      <h5>Tech Used - Django, jQuery</h5>
+      <p>This project was major redesign of StyleBistro's main portal to their slideshows. Using a 4 column "pinterest-esque" layout</p>
+    </section>
+    <!-- End StyleBistro lookbooks -->
   </div>
+  <!-- END PROJECTS -->
+  <footer>
+  <hr>
+  <p>Copyright is silly &#169; 2015 Dayne Jones</p>
+  </footer>
 </body>
