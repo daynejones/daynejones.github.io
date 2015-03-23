@@ -31,16 +31,20 @@ main > div {
 }
 
 h3.projects-title {
-  @include outer-container;
-  @include pad(0 10%);
-  margin-top: 1em;
-  margin-bottom: 1em;
+  margin: 1em 2.35765%;
+  @include media($mobile){
+    @include pad(0 8%);
+    margin: 1em 0;
+  }
 }
 
 .projects {
   margin: 0 2.35765%;
+  @include media($mobile){
+    @include pad(0 8%);
+    margin: 1em 0;
+  }
   img {
-    width: 100%;
     display: block;
   }
   section {
@@ -57,7 +61,7 @@ h3.projects-title {
     }
     position: relative;
     margin-bottom: 2.35765%;
-    h5, p {
+    .overlay h5, .overlay p {
       display: none;
     }
   }
@@ -73,8 +77,9 @@ h3.projects-title {
   opacity: 0;
   @include transition(opacity 0.25s);
   background-color: rgba(70, 125, 203, .8);
-  display: -webkit-flex;
-  align-items: center;
+  @include align-items(center);
+  @include display(flex);
+
 
   &:hover {
     opacity: 1;
@@ -97,4 +102,62 @@ h3.projects-title {
 
 footer {
   clear: both;
+}
+
+.lightbox {
+  display: none;
+  padding: 5%;
+  position: fixed;
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: black;
+  background: rgba(0,0,0,0.9);
+  color: #eaeaea;
+  overflow: auto;
+  @include media($mobile) {
+    width: 100%;
+  }
+  img {
+    /** Pad the lightbox image */
+    @include media($mobile) {
+      width: 100% !important;
+    }
+    @include media($tablet) {
+      @include span-columns(6);
+      @include shift(1);
+      width: auto;
+      max-width: 48%;
+      max-height: 80%;
+    }
+    @include media($desktop) {
+      @include span-columns(6);
+      @include shift(1);
+      width: auto;
+      max-width: 48%;
+      max-height: 80%;
+    }
+  }
+  div {
+    @include media($mobile) {
+      @include span-columns(4);
+      margin-top: 1em;
+    }
+    @include media($tablet) {
+      @include span-columns(4);
+    }
+    @include media($desktop) {
+      @include span-columns(4);
+    }
+  }
+
+  &:target {
+    /** Show lightbox when it is target */
+    display: block;
+
+    /** Remove default browser outline style */
+    outline: none;
+  }
 }

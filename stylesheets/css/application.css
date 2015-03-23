@@ -195,15 +195,26 @@ body {
   margin: 0;
   padding: 0; }
 
+.clear {
+  clear: both; }
+
 main, header, footer {
   max-width: 68em;
   margin-left: auto;
-  margin-right: auto;
-  padding: 0 10%; }
+  margin-right: auto; }
   main::after, header::after, footer::after {
     clear: both;
     content: "";
     display: table; }
+  @media screen and (max-width: 40em) {
+    main, header, footer {
+      padding: 0 8%; } }
+  @media screen and (min-width: 40em) and (max-width: 64em) {
+    main, header, footer {
+      padding: 0 15%; } }
+  @media screen and (min-width: 64em) {
+    main, header, footer {
+      padding: 0 15%; } }
 
 header {
   margin-top: 10em; }

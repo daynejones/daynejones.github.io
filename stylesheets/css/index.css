@@ -195,15 +195,26 @@ body {
   margin: 0;
   padding: 0; }
 
+.clear {
+  clear: both; }
+
 main, header, footer {
   max-width: 68em;
   margin-left: auto;
-  margin-right: auto;
-  padding: 0 10%; }
+  margin-right: auto; }
   main::after, header::after, footer::after {
     clear: both;
     content: "";
     display: table; }
+  @media screen and (max-width: 40em) {
+    main, header, footer {
+      padding: 0 8%; } }
+  @media screen and (min-width: 40em) and (max-width: 64em) {
+    main, header, footer {
+      padding: 0 15%; } }
+  @media screen and (min-width: 64em) {
+    main, header, footer {
+      padding: 0 15%; } }
 
 header {
   margin-top: 10em; }
@@ -267,21 +278,19 @@ main > div {
   margin-top: 3em; }
 
 h3.projects-title {
-  max-width: 68em;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 10%;
-  margin-top: 1em;
-  margin-bottom: 1em; }
-  h3.projects-title::after {
-    clear: both;
-    content: "";
-    display: table; }
+  margin: 1em 2.35765%; }
+  @media screen and (max-width: 40em) {
+    h3.projects-title {
+      padding: 0 8%;
+      margin: 1em 0; } }
 
 .projects {
   margin: 0 2.35765%; }
+  @media screen and (max-width: 40em) {
+    .projects {
+      padding: 0 8%;
+      margin: 1em 0; } }
   .projects img {
-    width: 100%;
     display: block; }
   .projects section {
     position: relative;
@@ -318,7 +327,7 @@ h3.projects-title {
           margin-right: 0; }
         .projects section:nth-child(3n+1) {
           clear: left; } }
-    .projects section h5, .projects section p {
+    .projects section .overlay h5, .projects section .overlay p {
       display: none; }
 
 .overlay {
@@ -333,8 +342,22 @@ h3.projects-title {
   -moz-transition: opacity 0.25s;
   transition: opacity 0.25s;
   background-color: rgba(70, 125, 203, 0.8);
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  box-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -o-align-items: center;
+  align-items: center;
+  -ms-flex-align: center;
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
   display: -webkit-flex;
-  align-items: center; }
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex; }
   .overlay:hover {
     opacity: 1; }
   .overlay h4 {
@@ -354,5 +377,81 @@ h3.projects-title {
 
 footer {
   clear: both; }
+
+.lightbox {
+  display: none;
+  padding: 5%;
+  position: fixed;
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: black;
+  background: rgba(0, 0, 0, 0.9);
+  color: #eaeaea;
+  overflow: auto; }
+  @media screen and (max-width: 40em) {
+    .lightbox {
+      width: 100%; } }
+  .lightbox img {
+    /** Pad the lightbox image */ }
+    @media screen and (max-width: 40em) {
+      .lightbox img {
+        width: 100% !important; } }
+    @media screen and (min-width: 40em) and (max-width: 64em) {
+      .lightbox img {
+        float: left;
+        display: block;
+        margin-right: 2.35765%;
+        width: 48.82117%;
+        margin-left: 8.5298%;
+        width: auto;
+        max-width: 48%;
+        max-height: 80%; }
+        .lightbox img:last-child {
+          margin-right: 0; } }
+    @media screen and (min-width: 64em) {
+      .lightbox img {
+        float: left;
+        display: block;
+        margin-right: 2.35765%;
+        width: 48.82117%;
+        margin-left: 8.5298%;
+        width: auto;
+        max-width: 48%;
+        max-height: 80%; }
+        .lightbox img:last-child {
+          margin-right: 0; } }
+  @media screen and (max-width: 40em) {
+    .lightbox div {
+      float: left;
+      display: block;
+      margin-right: 7.42297%;
+      width: 100%;
+      margin-top: 1em; }
+      .lightbox div:last-child {
+        margin-right: 0; } }
+  @media screen and (min-width: 40em) and (max-width: 64em) {
+    .lightbox div {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 31.76157%; }
+      .lightbox div:last-child {
+        margin-right: 0; } }
+  @media screen and (min-width: 64em) {
+    .lightbox div {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 31.76157%; }
+      .lightbox div:last-child {
+        margin-right: 0; } }
+  .lightbox:target {
+    /** Show lightbox when it is target */
+    display: block;
+    /** Remove default browser outline style */
+    outline: none; }
 
 /*# sourceMappingURL=index.css.map */

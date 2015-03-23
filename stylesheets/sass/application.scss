@@ -23,9 +23,21 @@ body {
   padding: 0;
 }
 
+.clear {
+  clear: both;
+}
+
 main, header, footer {
   @include outer-container;
-  @include pad(0 10%);
+  @include media($mobile){
+    @include pad(0 8%);
+  }
+  @include media($tablet){
+    @include pad(0 15%);
+  }
+  @include media($desktop){
+    @include pad(0 15%);
+  }
 }
 
 header {
