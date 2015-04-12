@@ -340,8 +340,6 @@ main > div {
           margin-right: 0; }
         .projects section:nth-child(3n+1) {
           clear: left; } }
-    .projects section .overlay h5, .projects section .overlay p {
-      display: none; }
 
 .overlay {
   position: absolute;
