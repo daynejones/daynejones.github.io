@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hypnospace</title>
+    <link href="style/main.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="main.js"></script>
+  </head>
+  <body>
+    <iframe id="theFrame"></iframe>
+    <form id="theForm">
+      <fieldset>
+        <label><b>URL</b><input id="userURL" type="url"></label>
+      </fieldset>
+      <fieldset>
+        <label><b>Text</b><input id="userText" type="text"></label>
+      </fieldset>
+      <fieldset>
+        <label><b>Choose an image</b></label>
+        <img class="select-gif" data-number="1" src="img/1.gif">
+        <img class="select-gif selected" data-number="2" src="img/2.gif">
+      </fieldset>
+      <fieldset>
+        <button type="submit" id="submit">GO!</button>
+      </fieldset>
+    </form>
+  </body>
+</html>

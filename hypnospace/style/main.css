@@ -1,0 +1,105 @@
+iframe {
+    position: fixed;
+    border: none;
+    top: 0; right: 0;
+    bottom: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: none;
+}
+
+.window {
+    z-index: 10;
+    height: 390px;
+    width: 548px;
+    background-image: url('../img/window-bg.png');
+    position: absolute;
+}
+
+.window img {
+  width: 240px;
+  margin-left: 30px;
+}
+
+.window .close {
+  right: 8px;
+  width: 30px;
+  height: 28px;
+}
+
+.window .check {
+  left: 8px;
+  width: 32px;
+  height: 34px;
+}
+
+.window .check, .window .close {
+  position: absolute;
+  top: 4px;
+  cursor: pointer;
+}
+
+marquee {
+    text-transform: uppercase;
+    margin: 100px 10px 0;
+    /* margin: 0 40px; */
+    font-size: 45px;
+    color: #fff;
+}
+
+.select-gif {
+  width: 300px;
+}
+
+img.selected {
+  border: 2px solid red;
+  margin: -2px;
+}
+
+form {
+  display: block;
+}
+
+button {
+  font-size: 30px;
+  border-radius: 10px;
+}
+
+/*
+ * FORM LIBRARY
+ */
+
+fieldset {
+  border: none;
+}
+
+form label {
+  display: block;
+  float: left;
+  clear: left;
+  margin: 10px 0;
+}
+form label b {
+  display: block;
+  float: left;
+  width: 80px;
+  margin-right: 20px;
+}
+form label input,
+form label textarea,
+form label select {
+  float: left;
+  width: 180px;
+}
+form label input[type="radio"],
+form label input[type="checkbox"] {
+  width: 20px;
+}
+form p {
+  clear: left;
+  margin: 10px 0 0;
+}
+form input[type="submit"] {
+  margin-left: 100px;
+}
