@@ -10,10 +10,18 @@ var parseQueryString = function( queryString ) {
     return params;
 };
 
+function ValidURL(str) {
+        return /^(https?|ftp):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i.test(str);
+}
+
 document.addEventListener('DOMContentLoaded', function(){ 
   window.windowMaker = (function(){
       var settings = {'windowHeight': 398, 'windowWidth': 548,
-          IMAGES: {1: '1.gif', 2: '2.gif'}}
+          IMAGES: {1: '1.gif', 2: '2.gif'},
+          BGIMAGES: {1: 'bg-1.gif', 2: 'bg-2.gif', 3: 'bg-3.gif', 4: 'bg-4.gif'},
+          windowNoise: new Audio("bongo-flute.mp3"),
+          FONTS: {0: "comic", 1: "times", 2: "arial", 3: "impact"}
+      }
 
       var URLParams = function(){
           var queryString = window.location.search;
@@ -45,8 +53,32 @@ document.addEventListener('DOMContentLoaded', function(){
           }
       }()
 
+      var userBgImg = function(){
+          if (URLParams.hasOwnProperty('bgimg')) {
+              return URLParams.bgimg;
+          } else {
+              return false;
+          }
+      }()
+
+      var userFont = function(){
+          if (URLParams.hasOwnProperty('font')) {
+              return URLParams.font;
+          } else {
+              return false;
+          }
+      }()
+
+      var userFontColor = function(){
+          if (URLParams.hasOwnProperty('fontColor')) {
+              return URLParams.fontColor;
+          } else {
+              return false;
+          }
+      }()
+
       var allQueryStringsPassed = function(){
-          return (userText && userImg && userURL);
+          return (userText && userImg && userURL && userBgImg && userFont && userFontColor);
       }()
 
       var createWindow = function(){
@@ -57,7 +89,12 @@ document.addEventListener('DOMContentLoaded', function(){
           var div = document.createElement("div");
           var randInt = Math.floor(Math.random() * 30) + 1;
 
-          div.innerHTML = '<marquee scrollamount="' + randInt + '">' + userText + '</marquee>' +
+          div.className = "font-" + settings.FONTS[userFont];
+          div.style.color = userFontColor;
+          div.style.backgroundImage = "url('img/" + settings.BGIMAGES[userBgImg] + "')";
+          div.innerHTML = '<marquee scrollamount="' + randInt + '">' + 
+                          '<a href="https://kickstarter.com/projects/jaytholen/hypnospace-outlaw">' + 
+                          userText + '</a></marquee>' +
                           '<img src="img/' + settings.IMAGES[userImg] + '">';
 
           var check = document.createElement("div");
@@ -74,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function(){
           }, false);
 
           check.addEventListener("click", function(){
-            if (Math.floor(Math.random() * 10) + 1 > 8) {
+            if (Math.floor(Math.random() * 10) + 1 > 6) {
               createWindow();
             } else {
               this.parentElement.remove()
@@ -84,11 +121,12 @@ document.addEventListener('DOMContentLoaded', function(){
           div.appendChild(check);
           div.appendChild(close);
 
-          div.className = "window";
+          div.className = div.className + " window";
           div.style.left = Math.floor(Math.random() * (browserWidth - settings.windowWidth)) + "px";
           div.style.top = Math.floor(Math.random() * (browserHeight - settings.windowHeight)) + "px";
 
           c.appendChild(div);
+          settings.windowNoise.play();
           document.body.appendChild(c);
       }
 
@@ -101,15 +139,27 @@ document.addEventListener('DOMContentLoaded', function(){
       }
 
       var selectImage = function(ele){
-          deselectImages();
-          this.className = "select-gif selected";
+          deselectImages(ele);
+          if (ele.target.className.indexOf("select-gif") !== -1){
+            this.className = "select-gif selected";
+          } else {
+            this.className = "select-bg-gif selected";
+          }
       }
 
-      var deselectImages = function(){
-          var images = document.getElementsByClassName("select-gif");
+      var deselectImages = function(ele){
+          var className, images;
+          // deselects all images of the same type
+          if (ele.target.className.indexOf("select-gif") !== -1){
+            images = document.getElementsByClassName("select-gif");
+            className = "select-gif";
+          } else {
+            images = document.getElementsByClassName("select-bg-gif");
+            className = "select-bg-gif";
+          }
           for (var i=0; i < images.length; i++){
               var img = images[i];   
-              img.className = "select-gif";
+              img.className = className;
           }
       }
 
@@ -122,19 +172,46 @@ document.addEventListener('DOMContentLoaded', function(){
           }
       }
 
+      var validateForm = function(){
+          var urlInput = document.getElementById("userURL");
+          var textInput = document.getElementById("userText");
+          if (!urlInput.value.trim()) {
+              alert("Please enter a URL!");
+              return false;
+          } else if (!ValidURL(urlInput.value)){
+              alert("Please enter a valid URL!");
+              return false;
+          }
+          if (!textInput.value.trim()) {
+              alert("Please enter some text!");
+              return false;
+          }
+          return true;
+      }
+
       var formSubmit = function(evt){
           evt.preventDefault();
-          var selectedImage = document.getElementsByClassName("selected")[0];
+          if (!validateForm()) return false;
+          var checkSelect = function(ele){return ele.className.indexOf("selected") !== -1};
+          var selectedImage = [].slice.call(document.getElementsByClassName("select-gif")).filter(checkSelect)[0];
+          var selectedBgImage = [].slice.call(document.getElementsByClassName("select-bg-gif")).filter(checkSelect)[0];
+
           var selectedImageNum = selectedImage.attributes['data-number'].value;
+          var selectedBgImageNum = selectedBgImage.attributes['data-number'].value;
+
+          var selectedFontNum = document.getElementById("fontChoice").value;
+          var selectedFontColor = document.getElementById("colorChoice").value;
+
           var userText = document.getElementById("userText").value;
           var userURL = document.getElementById("userURL").value;
 
           var newUrl = "http://daynejones.com/hypnospace/" +
                        "?url=" + userURL + 
                        "&text=" + escape(userText) + 
+                       "&bgimg=" + selectedBgImageNum + 
+                       "&font=" + selectedFontNum + 
+                       "&fontColor=" + selectedFontColor + 
                        "&img=" + selectedImageNum; 
-
-          console.log(newUrl);
 
           window.location = newUrl;
           return false;
@@ -164,6 +241,14 @@ document.addEventListener('DOMContentLoaded', function(){
       }
 
       var bindFormImages = function(){
+          // background images
+          var images = document.getElementsByClassName("select-bg-gif");
+          for (var i=0; i < images.length; i++){
+              var img = images[i];   
+              img.addEventListener('click', selectImage, false);
+          }
+
+          // body images
           var images = document.getElementsByClassName("select-gif");
           for (var i=0; i < images.length; i++){
               var img = images[i];   
