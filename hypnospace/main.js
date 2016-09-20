@@ -263,13 +263,11 @@ document.addEventListener('DOMContentLoaded', function(){
 
       var init = function(){
           if (allQueryStringsPassed){
-              console.log("all query strings passed");
               toggleFormDisplay();
               setupIframe();
               toggleIframeDisplay();
               startCreatingWindows();
           } else {
-              console.log("all query strings not passed");
               bindFormImages();
               bindFormSubmit();
           }
@@ -277,7 +275,6 @@ document.addEventListener('DOMContentLoaded', function(){
 
       return {
           init: init,
-          settings: settings, // remove this later
           stopCreatingWindows: stopCreatingWindows
       }
   }());

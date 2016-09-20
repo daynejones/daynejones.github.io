@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Hypnospace</title>
+    <title>HYPNOSPACE PARTNER BRAND POPUP AD GENERATOR - Hypnospace Outlaw for PC, MAC, and LINUX</title>
     <link href="style/main.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="main.js"></script>
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@jaytholen" />
     <meta name="twitter:creator" content="@jaytholen" />
     <meta property="og:url" content="http://daynejones.com/hypnospace/" />
-    <meta property="og:title" content="Make hypnospace pop up ads" />
-    <meta property="og:description" content="Don't be long, Enforcer. Hypnospace depends on you." />
-    <meta property="og:image" content="http://daynejones.com/hypnospace/img/1.gif" />
+    <meta property="og:title" content="HYPNOSPACE PARTNER BRAND POPUP AD GENERATOR - Hypnospace Outlaw for PC, MAC, and LINUX" />
+    <meta property="og:description" content="Make your own bizarre invasive pop-up ads and apply them to any website! Then check out Hypnospace Outlaw, a game for PC, MAC, and LINUX!" />
+    <meta property="og:image" content="http://daynejones.com/hypnospace/img/meta.png" />
     <script type="text/javascript">
+        // both types of images go in the img folder
         var BGIMAGES = ['bg-0.gif', 'bg-1.gif', 'bg-2.gif', 'bg-3.gif'],
             IMAGES = ['0.gif', '1.gif']
     </script>
@@ -70,14 +71,13 @@
         bgGifs = bgGifs + '<img class="select-bg-gif' + (i == 0 ? ' selected' : '') + 
                       '" data-number="' + i + '" src="img/bg-' + i + '.gif">'
     }
-    selectBgGif.innerHTML = bgGifs + bgGifs;
+    selectBgGif.innerHTML = bgGifs;
 
     var gifs = '';
     for (var i=0; i < IMAGES.length; i++){
         gifs = gifs + '<img class="select-gif' + (i == 0 ? ' selected' : '') + 
                       '" data-number="' + i + '" src="img/' + i + '.gif">'
     }
-    selectGif.innerHTML = gifs + gifs + gifs + gifs;
-
+    selectGif.innerHTML = gifs;
   </script>
 </html>
