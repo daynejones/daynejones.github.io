@@ -1,3 +1,12 @@
+@font-face {
+    font-family: 'somybmp01_7regular';
+    src: url('font.woff2') format('woff2'),
+         url('font.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 iframe {
     position: fixed;
     border: none;
@@ -17,8 +26,9 @@ iframe {
 }
 
 .window img {
-  width: 240px;
-  margin-left: 30px;
+  width: 220px;
+  margin: 0 auto;
+  display: block;
 }
 
 .window a {
@@ -52,29 +62,81 @@ marquee {
 }
 
 .select-gifs {
-  width: 600px;
-  height: 300px;
+  width: 720px;
+  height: 160px;
   overflow: scroll;
 }
 
 .select-bg-gif {
-  width: 150px;
+  width: 23%;
+  margin: 0 1% 2%;
   box-sizing: border-box;
+  cursor: pointer;
 }
 
 .select-gif {
-  width: 46%;
-  margin: 2%;
+  width: 23%;
+  margin: 0 1%;
   float: left;
   box-sizing: border-box;
+  cursor: pointer;
+}
+
+.select-bg-fieldset {
+  margin-bottom: 57px;
+}
+
+.select-gif-fieldset {
 }
 
 img.selected {
   border: 2px solid red;
 }
 
+.submit-button {
+  position: absolute;
+  bottom: 40px;
+  width: 236px;
+  margin-left: -118px;
+  left: 50%;
+  height: 59px;
+  cursor: pointer;
+}
+
 form {
   display: block;
+}
+
+.the-form {
+  background-image: url('../img/form-bg.png');
+  background-repeat: no-repeat;
+  margin: 0 auto;
+  width: 800px;
+  height: 1174px;
+  position: relative;
+}
+
+fieldset {
+  margin-bottom: 71px;
+  font-family: 'somybmp01_7regular', Arial, sans-serif;
+}
+
+fieldset input[type="text"], fieldset input[type="url"] {
+  font-family: 'somybmp01_7regular', Arial, sans-serif;
+  width: 550px;
+  height: 28px;
+  font-size: 28px;
+}
+
+fieldset select {
+  font-family: 'somybmp01_7regular', Arial, sans-serif;
+  width: 130px;
+  font-size: 28px;
+}
+
+.fieldsets {
+  padding-top: 304px;
+  padding-left: 24px;
 }
 
 button {

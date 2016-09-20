@@ -17,8 +17,8 @@ function ValidURL(str) {
 document.addEventListener('DOMContentLoaded', function(){ 
   window.windowMaker = (function(){
       var settings = {'windowHeight': 398, 'windowWidth': 548,
-          IMAGES: {1: '1.gif', 2: '2.gif'},
-          BGIMAGES: {1: 'bg-1.gif', 2: 'bg-2.gif', 3: 'bg-3.gif', 4: 'bg-4.gif'},
+          IMAGES: IMAGES,
+          BGIMAGES: BGIMAGES,
           windowNoise: new Audio("bongo-flute.mp3"),
           FONTS: {0: "comic", 1: "times", 2: "arial", 3: "impact"}
       }

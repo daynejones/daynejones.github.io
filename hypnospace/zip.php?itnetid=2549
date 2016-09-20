@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="author" content="NEVICOM" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Download somybmp01_7 font | free somybmp01_7.ttf  font </title>
+    <style>body{font-size:12px;font-family: Arial; line-height: 150%;}</style>
+</head>
+<body>
+<h1 align="center">Thank you for downloading free <font color="red"><a href="http://www.myfontfree.com/somybmp01_7-myfontfreecom84f2549.htm" title="somybmp01_7">font somybmp01_7</a></font></h1>
+<h1 align="center"><a href="http://www.myfontfree.com/somybmp01_7-myfontfreecom84f2549.htm" title="somybmp01_7"><img src="http://www.myfontfree.com/data/2/s/somybmp01_7/somybmp01_7.png" alt="somybmp01_7" title="somybmp01_7"/></a></h1>
+
+<p style="text-align: center;font-size: 16px; line-height: 30px;">
+<em>Download of <strong>somybmp01_7</strong> will start in <label id="labelTime">5</label> seconds...</em><br />
+Problems with the download? Please use this <strong><a href="zip.php?itnetid=2549&submit=728dcba8c34c50c986ddcfcc2ec2b30f" rel="nofollow" onclick="downloadURL(this);return false;">direct link</a></strong>
+</p>
+
+<script type="text/javascript">
+var timerID = null;
+function download(num){
+    if(num > 0){
+        num --;
+        document.getElementById("labelTime").innerHTML = num;
+        timerID=setTimeout("download("+num+")", 1000);
+    }
+    else{
+        window.location.href = "http://www.myfontfree.com/zip.php?itnetid=2549&submit=728dcba8c34c50c986ddcfcc2ec2b30f";
+    }
+}
+
+download(10);
+function downloadURL(obj){
+    clearTimeout(timerID);
+    window.location.href = obj.href;
+}
+</script>
+<hr />
+<div style="display: table;width:680px;margin:auto;">
+<div style="float: right;width:336px;height:280px;">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- HoSoCongTy.336x280 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:336px;height:280px"
+     data-ad-client="ca-pub-4435843541918348"
+     data-ad-slot="4166391916"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+<div style="float: right;width:336px;height:280px;">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- HoSoCongTy.336x280 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:336px;height:280px"
+     data-ad-client="ca-pub-4435843541918348"
+     data-ad-slot="4166391916"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+</div>
+<div style="width: 975px; display: table; margin: auto;">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- HCN-HOME -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:970px;height:250px"
+     data-ad-client="ca-pub-4435843541918348"
+     data-ad-slot="7313822711"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+</body>
+</html>

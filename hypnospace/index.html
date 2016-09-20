@@ -4,70 +4,80 @@
     <title>Hypnospace</title>
     <link href="style/main.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="main.js"></script>
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@jaytholen" />
+    <meta name="twitter:creator" content="@jaytholen" />
+    <meta property="og:url" content="http://daynejones.com/hypnospace/" />
+    <meta property="og:title" content="Make hypnospace pop up ads" />
+    <meta property="og:description" content="Don't be long, Enforcer. Hypnospace depends on you." />
+    <meta property="og:image" content="http://daynejones.com/hypnospace/img/1.gif" />
+    <script type="text/javascript">
+        var BGIMAGES = ['bg-0.gif', 'bg-1.gif', 'bg-2.gif', 'bg-3.gif'],
+            IMAGES = ['0.gif', '1.gif']
+    </script>
   </head>
   <body>
-    <iframe id="theFrame"></iframe>
-    <form id="theForm">
-      <fieldset>
-        <label><b>Enter your website's URL</b><input id="userURL" type="url"></label>
-      </fieldset>
-      <fieldset>
-        <label><b>Enter some Text</b><input id="userText" type="text"></label>
-      </fieldset>
-      <fieldset>
-        <label><b>Choose a font for your text</b></label>
-        <select id="fontChoice">
-          <option value="0">Comic Sans</option>
-          <option value="1">Times</option>
-          <option value="2">Arial</option>
-          <option value="3">Impact</option>
-        </select>
-      </fieldset>
-      <fieldset>
-        <label><b>Choose a color for your text</b></label>
-        <select id="colorChoice">
-          <option value="black">Black</option>
-          <option value="blue">Blue</option>
-          <option value="brown">Brown</option>
-          <option value="cyan">Cyan</option>
-          <option value="gold">Gold</option>
-          <option value="green">Green</option>
-          <option value="grey">Grey</option>
-          <option value="lime">Lime</option>
-          <option value="pink">Pink</option>
-          <option value="purple">Purple</option>
-          <option value="white">White</option>
-        </select>
-      </fieldset>
-      <fieldset>
-        <label><b>Choose a background image</b></label>
-        <img class="select-bg-gif selected" data-number="1" src="img/bg-1.gif">
-        <img class="select-bg-gif" data-number="2" src="img/bg-2.gif">
-        <img class="select-bg-gif" data-number="3" src="img/bg-3.gif">
-        <img class="select-bg-gif" data-number="4" src="img/bg-4.gif">
-      </fieldset>
-      <fieldset>
-        <label><b>Choose an image</b></label>
-        <div class="select-gifs">
-          <img class="select-gif selected" data-number="1" src="img/1.gif">
-          <img class="select-gif" data-number="2" src="img/2.gif">
-          <img class="select-gif" data-number="3" src="img/1.gif">
-          <img class="select-gif" data-number="4" src="img/2.gif">
-          <img class="select-gif" data-number="5" src="img/1.gif">
-          <img class="select-gif" data-number="6" src="img/2.gif">
-          <img class="select-gif" data-number="7" src="img/1.gif">
-          <img class="select-gif" data-number="8" src="img/2.gif">
-          <img class="select-gif" data-number="9" src="img/1.gif">
-          <img class="select-gif" data-number="10" src="img/2.gif">
-          <img class="select-gif" data-number="11" src="img/1.gif">
-          <img class="select-gif" data-number="12" src="img/2.gif">
-          <img class="select-gif" data-number="13" src="img/1.gif">
-          <img class="select-gif" data-number="14" src="img/2.gif">
-        </div>
-      </fieldset>
-      <fieldset>
-        <button type="submit" id="submit">GO!</button>
-      </fieldset>
+    <iframe sandbox="allow-same-origin allow-scripts allow-popups allow-forms" id="theFrame"></iframe>
+    <form id="theForm" class="the-form">
+      <div class="fieldsets">
+        <fieldset>
+          <input id="userURL" type="url">
+        </fieldset>
+        <fieldset>
+          <input id="userText" type="text">
+          <select id="fontChoice">
+            <option value="0">Comic Sans</option>
+            <option value="1">Times</option>
+            <option value="2">Arial</option>
+            <option value="3">Impact</option>
+          </select>
+        </fieldset>
+        <fieldset>
+          <select id="colorChoice">
+            <option value="black">Black</option>
+            <option value="blue">Blue</option>
+            <option value="brown">Brown</option>
+            <option value="cyan">Cyan</option>
+            <option value="gold">Gold</option>
+            <option value="green">Green</option>
+            <option value="grey">Grey</option>
+            <option value="lime">Lime</option>
+            <option value="pink">Pink</option>
+            <option value="purple">Purple</option>
+            <option value="white">White</option>
+          </select>
+        </fieldset>
+        <fieldset class="select-bg-fieldset">
+          <div id="selectBgGif" class="select-gifs">
+            <!--<img class="select-bg-gif" data-number="2" src="img/bg-2.gif">-->
+          </div>
+        </fieldset>
+        <fieldset class="select-gif-fieldset">
+          <div id="selectGif" class="select-gifs">
+            <!--<img class="select-gif" data-number="2" src="img/2.gif">-->
+          </div>
+        </fieldset>
+        <div id="submit" class="submit-button"></div>
+      </div>
     </form>
   </body>
+  <script type="text/javascript">
+    var selectBgGif = document.getElementById("selectBgGif");
+    var selectGif = document.getElementById("selectGif");
+
+    var bgGifs = '';
+    for (var i=0; i < BGIMAGES.length; i++){
+        bgGifs = bgGifs + '<img class="select-bg-gif' + (i == 0 ? ' selected' : '') + 
+                      '" data-number="' + i + '" src="img/bg-' + i + '.gif">'
+    }
+    selectBgGif.innerHTML = bgGifs + bgGifs;
+
+    var gifs = '';
+    for (var i=0; i < IMAGES.length; i++){
+        gifs = gifs + '<img class="select-gif' + (i == 0 ? ' selected' : '') + 
+                      '" data-number="' + i + '" src="img/' + i + '.gif">'
+    }
+    selectGif.innerHTML = gifs + gifs + gifs + gifs;
+
+  </script>
 </html>
