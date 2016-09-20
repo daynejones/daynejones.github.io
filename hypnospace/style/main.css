@@ -2,6 +2,10 @@ body {
     background-image: url('../img/site-bg.png');
 }
 
+body.no-bg {
+    background-image: none;
+}
+
 @font-face {
     font-family: 'somybmp01_7regular';
     src: url('font.woff2') format('woff2'),
@@ -11,7 +15,7 @@ body {
 
 }
 
-iframe {
+iframe.the-frame {
     position: fixed;
     border: none;
     top: 0; right: 0;
@@ -20,6 +24,11 @@ iframe {
     height: 100%;
     z-index: 1;
     display: none;
+}
+
+iframe.the-video {
+  display: block;
+  margin: 30px auto;
 }
 
 .window {

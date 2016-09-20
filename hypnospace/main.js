@@ -33,14 +33,16 @@ document.addEventListener('DOMContentLoaded', function(){
           if (URLParams.hasOwnProperty('text')) {
               return unescape(URLParams.text);
           } else {
+              //console.log("text not passed");
               return false;
           }
       }()
 
       var userImg = function(){
           if (URLParams.hasOwnProperty('img')) {
-              return parseInt(URLParams.img);
+              return URLParams.img;
           } else {
+              //console.log("img not passed");
               return false;
           }
       }()
@@ -49,6 +51,7 @@ document.addEventListener('DOMContentLoaded', function(){
           if (URLParams.hasOwnProperty('url')) {
               return URLParams.url;
           } else {
+              //console.log("url not passed");
               return false;
           }
       }()
@@ -57,6 +60,7 @@ document.addEventListener('DOMContentLoaded', function(){
           if (URLParams.hasOwnProperty('bgimg')) {
               return URLParams.bgimg;
           } else {
+              //console.log("bgimg not passed");
               return false;
           }
       }()
@@ -65,6 +69,7 @@ document.addEventListener('DOMContentLoaded', function(){
           if (URLParams.hasOwnProperty('font')) {
               return URLParams.font;
           } else {
+              //console.log("font not passed");
               return false;
           }
       }()
@@ -73,6 +78,7 @@ document.addEventListener('DOMContentLoaded', function(){
           if (URLParams.hasOwnProperty('fontColor')) {
               return URLParams.fontColor;
           } else {
+              //console.log("fontColor not passed");
               return false;
           }
       }()
@@ -205,7 +211,7 @@ document.addEventListener('DOMContentLoaded', function(){
           var userText = document.getElementById("userText").value;
           var userURL = document.getElementById("userURL").value;
 
-          var newUrl = "http://daynejones.com/hypnospace/" +
+          var newUrl = "/" +
                        "?url=" + userURL + 
                        "&text=" + escape(userText) + 
                        "&bgimg=" + selectedBgImageNum + 
@@ -261,13 +267,26 @@ document.addEventListener('DOMContentLoaded', function(){
           submit.addEventListener('click', formSubmit, false);
       }
 
+      var hideVideo = function(){
+          var video = document.getElementById("theVideo");
+          video.style.display = "none";
+      }
+
+      var clearBackground = function(){
+          document.body.style.background = "none";
+      }
+
       var init = function(){
           if (allQueryStringsPassed){
+              //console.log("all query strings passed");
               toggleFormDisplay();
+              hideVideo();
+              clearBackground();
               setupIframe();
               toggleIframeDisplay();
               startCreatingWindows();
           } else {
+              //console.log("not all query strings passed");
               bindFormImages();
               bindFormSubmit();
           }
