@@ -128,14 +128,14 @@ form {
   background-size: cover;
   margin: 0 auto;
   width: 800px;
-  height: 1456px;
+  height: 1704px;
   position: relative;
 }
 
 .select-sound-fieldset {
   font-size: 28px;
   overflow: scroll;
-  height: 25px;
+  height: 386px;
 }
 
 .sound-container {

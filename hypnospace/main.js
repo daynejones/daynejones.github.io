@@ -201,7 +201,6 @@ document.addEventListener('DOMContentLoaded', function(){
       }
 
       var deselectSounds = function(){
-          console.log("HERE");
           var soundContainers = document.getElementsByClassName("sound-container");
           for (var i=0; i < soundContainers.length; i++){
               var container = soundContainers[i];   
@@ -269,7 +268,7 @@ document.addEventListener('DOMContentLoaded', function(){
           var userText = document.getElementById("userText").value;
           var userURL = document.getElementById("userURL").value;
 
-          var newUrl = "file:///Users/daynejones/Developer/daynejones.github.io/hypnospace/index.html" +
+          var newUrl = "/" +
                        "?url=" + userURL + 
                        "&text=" + escape(userText) + 
                        "&bgimg=" + selectedBgImageNum + 
