@@ -39,9 +39,9 @@ iframe.the-video {
 }
 
 .window img {
-  width: 220px;
-  margin: 0 auto;
-  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 
 .window a {
@@ -78,6 +78,7 @@ marquee {
   width: 720px;
   height: 160px;
   overflow: scroll;
+  padding: 4px 0;
 }
 
 .select-bg-gif {
@@ -100,15 +101,16 @@ marquee {
 }
 
 .select-gif-fieldset {
+  margin-bottom: 60px;
 }
 
-img.selected {
-  border: 2px solid red;
+img.selected, .select-sound-fieldset .selected {
+  outline: 2px solid red;
 }
 
 .submit-button {
   position: absolute;
-  bottom: 40px;
+  bottom: 200px;
   width: 236px;
   margin-left: -118px;
   left: 50%;
@@ -123,10 +125,32 @@ form {
 .the-form {
   background-image: url('../img/form-bg.png');
   background-repeat: no-repeat;
+  background-size: cover;
   margin: 0 auto;
   width: 800px;
-  height: 1174px;
+  height: 1456px;
   position: relative;
+}
+
+.select-sound-fieldset {
+  font-size: 28px;
+  overflow: scroll;
+  height: 25px;
+}
+
+.sound-container {
+  padding: 5px 10px 0;
+  max-width: 250px;
+}
+
+.play {
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.select-sound {
+  cursor: pointer;
+  margin-left: 20px;
 }
 
 fieldset {

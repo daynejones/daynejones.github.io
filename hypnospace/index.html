@@ -7,14 +7,18 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@jaytholen" />
     <meta name="twitter:creator" content="@jaytholen" />
-    <meta property="og:url" content="http://daynejones.com/hypnospace/" />
+    <meta property="og:url" content="http://hypnospace.net/" />
     <meta property="og:title" content="HYPNOSPACE PARTNER BRAND POPUP AD GENERATOR - Hypnospace Outlaw for PC, MAC, and LINUX" />
     <meta property="og:description" content="Make your own bizarre invasive pop-up ads and apply them to any website! Then check out Hypnospace Outlaw, a game for PC, MAC, and LINUX!" />
     <meta property="og:image" content="http://daynejones.com/hypnospace/img/meta.png" />
     <script type="text/javascript">
         // both types of images go in the img folder
         var BGIMAGES = ['bg-0.gif', 'bg-1.gif', 'bg-2.gif', 'bg-3.gif'],
-            IMAGES = ['0.gif', '1.gif']
+            IMAGES = ['0.gif', '1.gif','2.gif','3.gif','4.gif','5.gif'],
+            SOUNDS = ['sound_0.mp3','sound_1.mp3','sound_2.mp3','sound_3.mp3',
+                      'sound_4.mp3','sound_5.mp3','sound_6.mp3','sound_7.mp3',
+                      'sound_8.mp3','sound_9.mp3','sound_10.mp3','sound_11.mp3',
+                      'sound_12.mp3','sound_13.mp3','sound_14.mp3','sound_15.mp3']
     </script>
   </head>
   <body>
@@ -23,7 +27,7 @@
     <form id="theForm" class="the-form">
       <div class="fieldsets">
         <fieldset>
-          <input id="userURL" type="url">
+          <input id="userURL" type="url" value="http://">
         </fieldset>
         <fieldset>
           <input id="userText" type="text">
@@ -59,6 +63,9 @@
             <!--<img class="select-gif" data-number="2" src="img/2.gif">-->
           </div>
         </fieldset>
+        <fieldset class="select-sound-fieldset">
+          <div id="selectSound"></div>
+        </fieldset>
         <div id="submit" class="submit-button"></div>
       </div>
     </form>
@@ -80,5 +87,5 @@
                       '" data-number="' + i + '" src="img/' + i + '.gif">'
     }
     selectGif.innerHTML = gifs;
-  </script>
+  </script><BR><BR>
 </html>

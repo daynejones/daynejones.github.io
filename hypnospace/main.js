@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', function(){
       var settings = {'windowHeight': 398, 'windowWidth': 548,
           IMAGES: IMAGES,
           BGIMAGES: BGIMAGES,
-          windowNoise: new Audio("bongo-flute.mp3"),
           FONTS: {0: "comic", 1: "times", 2: "arial", 3: "impact"}
       }
 
@@ -83,8 +82,17 @@ document.addEventListener('DOMContentLoaded', function(){
           }
       }()
 
+      var userSound = function(){
+          if (URLParams.hasOwnProperty('sound')) {
+              return URLParams.sound;
+          } else {
+              //console.log("sound not passed");
+              return false;
+          }
+      }()
+
       var allQueryStringsPassed = function(){
-          return (userText && userImg && userURL && userBgImg && userFont && userFontColor);
+          return (userText && userImg && userURL && userBgImg && userFont && userFontColor && userSound);
       }()
 
       var createWindow = function(){
@@ -93,15 +101,15 @@ document.addEventListener('DOMContentLoaded', function(){
           var browserHeight = document.documentElement.clientHeight;
           var c = document.createDocumentFragment()
           var div = document.createElement("div");
-          var randInt = Math.floor(Math.random() * 30) + 1;
+          var randInt = Math.floor(Math.random() * 40) + 1;
 
           div.className = "font-" + settings.FONTS[userFont];
           div.style.color = userFontColor;
           div.style.backgroundImage = "url('img/" + settings.BGIMAGES[userBgImg] + "')";
-          div.innerHTML = '<marquee scrollamount="' + randInt + '">' + 
+          div.innerHTML = '<img src="img/' + settings.IMAGES[userImg] + '">' +
+                          '<marquee scrollamount="' + randInt + '">' +
                           '<a href="https://kickstarter.com/projects/jaytholen/hypnospace-outlaw">' + 
-                          userText + '</a></marquee>' +
-                          '<img src="img/' + settings.IMAGES[userImg] + '">';
+                          userText + '</a></marquee>';
 
           var check = document.createElement("div");
           check.className = "check";
@@ -132,12 +140,14 @@ document.addEventListener('DOMContentLoaded', function(){
           div.style.top = Math.floor(Math.random() * (browserHeight - settings.windowHeight)) + "px";
 
           c.appendChild(div);
-          settings.windowNoise.play();
           document.body.appendChild(c);
+          var audio = new Audio('sound/' + SOUNDS[userSound]);
+          audio.play();
       }
+	  var randomnumber = Math.floor(Math.random() * (7000 - 1000 + 1)) + 1000;
 
       var startCreatingWindows = function(){
-          settings.interval = setInterval(createWindow, '3000');
+          settings.interval = setInterval(createWindow, randomnumber);
       }
 
       var stopCreatingWindows = function(){
@@ -178,6 +188,51 @@ document.addEventListener('DOMContentLoaded', function(){
           }
       }
 
+      var playSound = function(){
+          var sound = this.parentElement.attributes['data-sound'].value;
+          var audio = new Audio('sound/' + SOUNDS[sound]);
+          audio.play();
+      }
+
+      var selectSound = function(){
+          deselectSounds();
+          var sound = this.parentElement.attributes['data-sound'].value;
+          this.parentElement.className = "sound-container selected";
+      }
+
+      var deselectSounds = function(){
+          console.log("HERE");
+          var soundContainers = document.getElementsByClassName("sound-container");
+          for (var i=0; i < soundContainers.length; i++){
+              var container = soundContainers[i];   
+              container.className = "sound-container";
+          }
+      }
+
+      var setupSoundSelect = function(){
+          var div = document.getElementById("selectSound");
+          var HTML = '';
+          for (var i=0; i < SOUNDS.length; i++){
+              HTML = HTML + "<div class='sound-container " + (i == 0 ? "selected" : "" ) + 
+                    "' data-sound='"+i+"'>Sound " + (i+1) + "<span class='play'>&#9658;</span>" + 
+                    "<span class='select-sound'>&#10003</span></div>";
+          }
+          div.innerHTML = HTML;
+
+          // adding event listeners
+          var playButtons = document.getElementsByClassName("play");
+          for (var i=0; i < playButtons.length; i++){
+              var playButton = playButtons[i];   
+              playButton.addEventListener('click', playSound, false);
+          }
+
+          var selectButtons = document.getElementsByClassName("select-sound");
+          for (var i=0; i < selectButtons.length; i++){
+              var selectButton = selectButtons[i];   
+              selectButton.addEventListener('click', selectSound, false);
+          }
+      }
+
       var validateForm = function(){
           var urlInput = document.getElementById("userURL");
           var textInput = document.getElementById("userText");
@@ -201,6 +256,7 @@ document.addEventListener('DOMContentLoaded', function(){
           var checkSelect = function(ele){return ele.className.indexOf("selected") !== -1};
           var selectedImage = [].slice.call(document.getElementsByClassName("select-gif")).filter(checkSelect)[0];
           var selectedBgImage = [].slice.call(document.getElementsByClassName("select-bg-gif")).filter(checkSelect)[0];
+          var selectedSound = [].slice.call(document.getElementsByClassName("sound-container")).filter(checkSelect)[0];
 
           var selectedImageNum = selectedImage.attributes['data-number'].value;
           var selectedBgImageNum = selectedBgImage.attributes['data-number'].value;
@@ -208,15 +264,18 @@ document.addEventListener('DOMContentLoaded', function(){
           var selectedFontNum = document.getElementById("fontChoice").value;
           var selectedFontColor = document.getElementById("colorChoice").value;
 
+          var selectedSoundNum = selectedSound.attributes['data-sound'].value;
+
           var userText = document.getElementById("userText").value;
           var userURL = document.getElementById("userURL").value;
 
-          var newUrl = "/" +
+          var newUrl = "file:///Users/daynejones/Developer/daynejones.github.io/hypnospace/index.html" +
                        "?url=" + userURL + 
                        "&text=" + escape(userText) + 
                        "&bgimg=" + selectedBgImageNum + 
                        "&font=" + selectedFontNum + 
                        "&fontColor=" + selectedFontColor + 
+                       "&sound=" + selectedSoundNum + 
                        "&img=" + selectedImageNum; 
 
           window.location = newUrl;
@@ -287,6 +346,7 @@ document.addEventListener('DOMContentLoaded', function(){
               startCreatingWindows();
           } else {
               //console.log("not all query strings passed");
+              setupSoundSelect();
               bindFormImages();
               bindFormSubmit();
           }
