@@ -2,7 +2,7 @@
 
 .meta {
   img {
-    @include span-columns(5);
+    @include span-columns(3);
     border-radius: 50%;
     @include media($mobile){
       width: 100%;

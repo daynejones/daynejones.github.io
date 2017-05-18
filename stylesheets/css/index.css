@@ -217,7 +217,7 @@ main, header, footer {
       padding: 0 10em; } }
 
 header {
-  margin-top: 10em; }
+  margin-top: 5em; }
   @media screen and (max-width: 40em) {
     header {
       margin-top: 2em; } }
@@ -249,7 +249,7 @@ h5 {
   float: left;
   display: block;
   margin-right: 2.35765%;
-  width: 40.29137%;
+  width: 23.23176%;
   border-radius: 50%; }
   .meta img:last-child {
     margin-right: 0; }
