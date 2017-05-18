@@ -17,7 +17,7 @@
         <a href="mailto:jones.dayne@gmail.com">email</a> |
         <a href="https://www.linkedin.com/in/daynejones">linkedIn</a> |
         <a href="/resume.pdf">resume</a> |
-        <a href="/blog.html">resume</a>
+        <a href="/blog.html">blog</a>
         <h5>
     </div>
   </header>
@@ -25,16 +25,59 @@
     <!-- ABOUT -->
     <div class="about">
       <h3>Blog</h3>
-      <p>I am a full stack engineer that leans slightly toward the front end. I design and build a wide range of applications, tools, and games for Livingly Media Inc and many others for my various side endeavors. Sometimes that means implementing a new javascript framework and building an API, sometimes coding up a webpage from a mockup, and sometimes it's designing and implementing sensical and performant data models.</p>
-      <p>My favorite languages to work with are <b>Javascript, HTML5, CSS3, SQL, PHP, Python, and Ruby</b>. On top of these languages, I love working with <b>Backbone, Angular, Django, Rails, Git, Docker, Unix, MongoDB, Node, Bootstrap and the Bourbon family</b> though I'm always testing out the latest technology in my spare time.</p>
-      <p>I am opinionated about writing code that is readable, well commented, and full of helpful variable and function names. Performant systems with extensive testing make me incredibly happy. When the browser is involved, cross-platform compatibility is my top priority.</p>
-      <p>When I'm not writing code for Livingly, I'm writing code or DIYs for <a href="http://howchoo.com">Howchoo.com</a>. When I'm not doing that, I'm learning the latest new framework or language. When I'm not doing that, I'm probably hiking, reading, making coffee, or with my amazing family.</p>
-    </div>
+      <h4>The poor man's data pipeline</h4>
+      <p>May 17, 2017</p>
+      <p>Tasked with building out a shiny new data pipeline in May of 2017, I devoured every bit of experience I could find from colleagues, meetups, and research. My criteria were low operational responsibility, high flexibility for future development, and that the thing be simple enough that I can implement it myself. If you know anything about the landscape of big data, you know solutions in this space aren't exactly known for their low maintenance and simplicity. Just read some of the blogs of the big players like <a href="https://labs.spotify.com/2016/02/25/spotifys-event-delivery-the-road-to-the-cloud-part-i/">Spotify</a>, <a href="https://medium.com/netflix-techblog/evolution-of-the-netflix-data-pipeline-da246ca36905">Netflix</a>, and <a href="https://engineeringblog.yelp.com/2016/07/billions-of-messages-a-day-yelps-real-time-data-pipeline.html">Yelp</a>. Yes, these are complex in part because the companies are massive but I think you'll find every modern case study looks similar. I was convinced there was an easier way to get 80% of the functionality for 20% of the work.</p>
+
+      <p>The primary issue I encountered is that many of the tools that come highly recommended are highly complex. The nature of working with massive amounts of data means that your ingestion and processing of that data must be highly distributed so independent pieces can scale easily. It is also a technical challenge to ensure reliable delivery of your data. This leads to architectures that are not intuitive for the average engineer (I still don't <i>really</i> know what Kafka does).</p>
+
+      <p>How was I, a lowly software engineer, supposed to come up with a quick proof of concept that can be built into a real, useful piece of software without losing monts of development time upfront and countless maintenance time on the backend? What I have come up with seems to give me a flexible, infinitely scalable, and near real time data pipeline. Let's see how it works. I have an overview here and a more instructional guide is included in the repository.</p>
+
+      <p><img src="http://imgur.com/jQi50rm.jpg"></p>
+
+      <ol>
+        <li>
+          <b>Ingest (or extract)</b>
+          <p>To get the data I want, I borrowed a page out of the standard tracking pixel playbook. We will fire a tracking pixel using query string parameters to deliver the data we're interested in tracking. Setting up a simple HTTP load balancer in Google Cloud Platform allows us to do 2 things with no ops and almost no configuration. We get to respond quickly with a 1x1 transparent png and we get to gather the logs from that request. Here's what my load balancer config looks like.</p>
+          <p><img src="http://imgur.com/JL5oRON.jpg"></p>
+          <p>For reference, a tracking pixel request would look something like this: http://track.domain.com/pixel.png?user_id=123&event=click</p>
+          <p>To get to the next step, we need to use Pub/Sub. Pub/Sub is a very simple messaging service. Just create a new topic in Pub/Sub and remember its name. To begin publishing log messages, all you need is a built in feature of StackDriver (Google's logging service). Here's what that setup looks like.</p>
+          <p><img src="http://imgur.com/cudgoJK.jpg"></p>
+        </li>
+        <li>
+          <b>Process (or transform)</b>
+          <p>My data parsing is very lightweight. It consists of turning a URL like the aforementioned http://track.domain.com/pixel.png?user_id=123&event=click into an object that looks like this: {user_id: 123, event: 'click'}. Ideally, we want something that can scale up during spikes and lay dormant the rest of the time. Bonus points for speed and flexibility of development. Google Cloud Functions fit the bill for this very well. My Google Cloud Function is subscribed to the same topic, recieves a single log message, processes it, then uploads the result to BigQuery.</p>
+        </li>
+        <li>
+          <b>Store (or load)</b>
+          <p>Now your data lives in BigQuery for all your querying needs. Here's a visual for reference. Keep in mind, your schema can be whatever you dream up.</p>
+          <p><img src="http://imgur.com/Qkijo4w.jpg"></p>
+          <p>A note about BigQuery: out of all the Google Cloud Platform products, BigQuery seems to have made the biggest impact on the industry. This is the one part of my pipeline with which I did have some experience and I felt very confident in its value. The Google Cloud Function uploads to partitioned tables by date and by user_id (since we are running a multi-tenant setup). This means that even though we're gathering a huge amount of data, we will only be querying small subsets of that data to keep cost low. Since repeat queries for which the underlying data has not changed are completely free, you will only pay when you query the same data repeatedly on the day that it is being gathered.</p>
+          <p>Even apart from its massive scalability, ease of use, and much better pricing than alternatives on the market, BigQuery solves a big problem for me since it has fairly wide support for common BI products like Looker and Tableau. Even Google Data Studio is worth a mention since it's already setup for you.</p>
+        </li>
+      </ol>
+      <p>Enough rambling. Here's the repository with all the relevant code and instructions. Feedback welcome!<p>
+      <div id="disqus_thread"></div>
     <!-- END ABOUT -->
   </main>
   <!-- END PROJECTS -->
   <footer>
   <hr>
-  <p>Copyright is silly &#169; 2015 Dayne Jones</p>
+  <p>2017</p>
   </footer>
+  <script>
+
+  var disqus_config = function () {
+    this.page.url = 'http://daynejones.com/blog.html';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = 'blog'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+  };
+
+  (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://daynejones-com.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </body>
